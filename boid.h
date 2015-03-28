@@ -1,3 +1,6 @@
+#ifndef BOID_H
+#define BOID_H
+
 class Boid {
 
 public:
@@ -7,7 +10,7 @@ public:
     void set_y(double y) {
         this->pos_y = y;
     }
-    
+
     Boid(double pos_x, double pos_y, double pos_z) {
         this->pos_x = pos_x;
         this->pos_y = pos_y;
@@ -21,3 +24,5 @@ private:
 
 
 };
+
+#endif

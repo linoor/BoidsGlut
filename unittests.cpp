@@ -2,6 +2,8 @@
 #include "catch.hpp"
 #include "boid.h"
 #include <vector>
+#include <array>
+#include "rules.cpp"
 
 /* example testing code
 unsigned int Factorial( unsigned int number ) {
