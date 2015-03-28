@@ -19,10 +19,15 @@ TEST_CASE( "Factorials are computed", "[factorial]" ) {
 // Rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
 
 TEST_CASE("Test calculating center of mass") {
-    Boid boids[3] = {
-        new Boid(20.0, 10.0, 30.0),
-        new Boid(10.0, 20.0, 30.0),
-        new Boid(30.0, 20.0, 30.0)
+    std::array<Boid, 3> boids = {
+        Boid(20.0, 10.0, 30.0),
+        Boid(10.0, 20.0, 30.0),
+        Boid(30.0, 20.0, 30.0)
     };
-    REQUIRE(center_of_mass(boids) == [20.0, 20.0, 30.0]);
+    double result[3] = {
+        20.0,
+        20.0,
+        30.0
+    };
+    REQUIRE(center_of_mass(boids) == result);
 }
