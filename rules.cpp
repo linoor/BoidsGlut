@@ -1,5 +1,6 @@
 #include "boid.h"
 #include <vector>
+#include <algorithm>
 
 std::vector<double> center_of_mass(std::vector<Boid> boids) {
 
@@ -26,6 +27,9 @@ std::vector<double> center_of_mass(std::vector<Boid> boids) {
 }
 
 std::vector<double> perceived_center(std::vector<Boid> boids, Boid current) {
-    // remove current boid
+    std::vector<Boid> others = boids;
+    // removing current boid from the vector
+    others.erase(std::remove(others.begin(), others.end(), current), others.end());
 
+    return center_of_mass(others);
 }
