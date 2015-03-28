@@ -1,5 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
+#include "boid.h"
+#include <vector>
 
 /* example testing code
 unsigned int Factorial( unsigned int number ) {
@@ -13,3 +15,14 @@ TEST_CASE( "Factorials are computed", "[factorial]" ) {
     REQUIRE( Factorial(10) == 3628800 );
 }
 */
+
+// Rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
+
+TEST_CASE("Test calculating center of mass") {
+    Boid boids[3] = {
+        new Boid(20.0, 10.0, 30.0),
+        new Boid(10.0, 20.0, 30.0),
+        new Boid(30.0, 20.0, 30.0)
+    };
+    REQUIRE(center_of_mass(boids) == [20.0, 20.0, 30.0]);
+}
