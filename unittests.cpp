@@ -31,5 +31,5 @@ TEST_CASE("Test calculating center of mass") {
         20.0,
         30.0
     };
-    REQUIRE(center_of_mass(boids) == result);
+    REQUIRE(center_of_mass(boids) == results);
 }
