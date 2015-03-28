@@ -24,7 +24,7 @@ TEST_CASE("Test calculating center of mass") {
         Boid(10.0, 20.0, 30.0),
         Boid(30.0, 20.0, 30.0)
     };
-    double result[3] = {
+    std::array<double, 3> results = {
         20.0,
         20.0,
         30.0
