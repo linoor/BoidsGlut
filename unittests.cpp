@@ -32,3 +32,16 @@ TEST_CASE("Test calculating center of mass") {
     REQUIRE(boids_results[1] == 20.0);
     REQUIRE(boids_results[2] == 30.0);
 }
+
+TEST_CASE("Calculate perceived center of mass") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0),
+        Boid(10.0, 20.0, 30.0),
+        Boid(10.0, 40.0, 60.0)
+    };
+
+    std::vector<double> boids_results_perceived = perceived_center(boids, boids[0]);
+    REQUIRE(boids_results_perceived[0] == 10.0);
+    REQUIRE(boids_results_perceived[1] == 30.0);
+    REQUIRE(boids_results_perceived[2] == 45.0);
+}
