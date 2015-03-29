@@ -67,21 +67,33 @@ TEST_CASE("get distance test") {
     REQUIRE(result == 10.0);
 }
 
-// TEST_CASE("Rule 2: Boids try to keep a small distance away from other objects (including other boids)") {
-//     std::vector<Boid> boids = {
-//         Boid(20.0, 20.0, 30.0),
-//         Boid(10.0, 20.0, 30.0),
-//         Boid(10.0, 40.0, 60.0)
-//     };
+TEST_CASE("Rule 2: Boids try to keep a small distance away from other objects (including other boids)") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0),
+        Boid(10.0, 20.0, 30.0)
+        // Boid(10.0, 40.0, 60.0)
+    };
 
-//     std::vector<double> c = rule2(boids, boids[0]);
+    std::vector<double> c = rule2(boids, boids[0]);
 
-//     // c = [0.0, 0.0, 0.0]
-//     // b - bj = [-10.0, 0.0, 0.0]
-//     // c = [10.0, 0.0, 0.0]
-//     // b - bj = [-10.0, 20.0, 30.0]
-//     // c = [20.0, -20.0, -30.0]
-//     REQUIRE(c[0] == 20.0);
-//     REQUIRE(c[1] == -20.0);
-//     REQUIRE(c[2] == -30.0);
-// }
+    // c = [0.0, 0.0, 0.0]
+    // b - bj = [-10.0, 0.0, 0.0]
+    // c = [10.0, 0.0, 0.0]
+    // b - bj = [-10.0, 20.0, 0.0]
+    // c = [20.0, -20.0, 0.0]
+    REQUIRE(c[0] == 10.0);
+    REQUIRE(c[1] == 0.0);
+    REQUIRE(c[2] == 0.0);
+
+    std::vector<Boid> boids2 = {
+        Boid(20.0, 20.0, 30.0),
+        Boid(10.0, 20.0, 30.0),
+        Boid(10.0, 40.0, 30.0)
+    };
+
+    std::vector<double> c2 = rule2(boids2, boids[0]);
+
+    REQUIRE(c2[0] == 20.0);
+    REQUIRE(c2[1] == -20.0);
+    REQUIRE(c2[2] == 0.0);
+}

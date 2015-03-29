@@ -54,3 +54,34 @@ std::vector<double> rule1(std::vector<Boid> boids, Boid current) {
 
     return pc;
 }
+
+std::vector<double> rule2(std::vector<Boid> boids, Boid current) {
+    const double distance_factor = 100.0;
+
+    std::vector<double> c = {
+        0.0,
+        0.0,
+        0.0
+    };
+
+    std::vector<Boid> others = get_others(boids, current);
+
+    for (int i = 0; i < others.size(); i++) {
+        Boid boid = others[i];
+        double distance = boid.get_distance(current);
+
+        if (distance < distance_factor) {
+            std::vector<double> diff = {
+                boid.get_x() - current.get_x(),
+                boid.get_y() - current.get_y(),
+                boid.get_z() - current.get_z()
+            };
+
+            c[0] -= diff[0];
+            c[1] -= diff[1];
+            c[2] -= diff[2];
+        }
+    }
+
+    return c;
+}
