@@ -99,3 +99,8 @@ double per_avg_velocity(std::vector<Boid> boids, Boid current) {
     std::vector<Boid> others = get_others(boids, current);
     return avg_velocity(others);
 }
+
+double rule3(std::vector<Boid> boids, Boid current) {
+    const int factor = 8;
+    return (per_avg_velocity(boids, current) - current.get_vel()) / factor;
+}

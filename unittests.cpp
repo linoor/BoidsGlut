@@ -120,3 +120,14 @@ TEST_CASE("Calculating perceived velocity") {
    double vel_results = per_avg_velocity(boids, boids[0]);
    REQUIRE(vel_results == 40.0);
 }
+
+TEST_CASE("Rule 3") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0, 8.0),
+        Boid(10.0, 20.0, 30.0, 50.0),
+        Boid(30.0, 20.0, 30.0, 30.0)
+    };
+
+    double offset_vel = rule3(boids, boids[0]);
+    REQUIRE(offset_vel == 4.0);
+}
