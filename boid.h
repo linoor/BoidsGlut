@@ -18,6 +18,10 @@ public:
         this->pos_y = y;
     }
 
+    void set_z(double z) {
+        this->pos_z = z;
+    }
+
     double get_x() const {
         return pos_x;
     }
