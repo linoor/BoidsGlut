@@ -34,6 +34,15 @@ public:
         return pos_z;
     }
 
+    std::vector<double> get_vector() {
+        std::vector<double> result = {
+            pos_x,
+            pos_y,
+            pos_z
+        };
+        return result;
+    }
+
     bool operator==(const Boid& other) {
         return this->get_x() == other.get_x()
         && this->get_y() == other.get_y()

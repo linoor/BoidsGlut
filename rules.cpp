@@ -26,12 +26,16 @@ std::vector<double> center_of_mass(std::vector<Boid> boids) {
     return results;
 }
 
-std::vector<double> perceived_center(std::vector<Boid> boids, Boid current) {
+std::vector<Boid> get_others(std::vector<Boid> boids, Boid current) {
     std::vector<Boid> others = boids;
     // removing current boid from the vector
     others.erase(std::remove(others.begin(), others.end(), current), others.end());
 
-    return center_of_mass(others);
+    return others;
+}
+
+std::vector<double> perceived_center(std::vector<Boid> boids, Boid current) {
+    return center_of_mass(get_others(boids, current));
 }
 
 // returns offset vector for a specific boid (moves the boid 1% to the perceived center)
