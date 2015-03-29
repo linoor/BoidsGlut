@@ -1,3 +1,5 @@
+SOURCES = unittests.cpp 
+
 test:
-	g++ test_unittest.cpp -o unittests
+	g++ -std=c++11 $(SOURCES) -o unittests
 	./unittests
