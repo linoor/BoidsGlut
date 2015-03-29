@@ -109,3 +109,14 @@ TEST_CASE("Calculate average velocity") {
     double vel_results = avg_velocity(boids);
     REQUIRE(vel_results == 30.0);
 }
+
+TEST_CASE("Calculating perceived velocity") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0, 10.0),
+        Boid(10.0, 20.0, 30.0, 50.0),
+        Boid(30.0, 20.0, 30.0, 30.0)
+    };
+
+   double vel_results = per_avg_velocity(boids, boids[0]);
+   REQUIRE(vel_results == 40.0);
+}

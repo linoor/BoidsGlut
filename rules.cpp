@@ -94,3 +94,8 @@ double avg_velocity(std::vector<Boid> boids) {
                       0,
                       [](double res, Boid b){ return res + b.get_vel(); }) / boids.size();
 }
+
+double per_avg_velocity(std::vector<Boid> boids, Boid current) {
+    std::vector<Boid> others = get_others(boids, current);
+    return avg_velocity(others);
+}
