@@ -87,3 +87,10 @@ std::vector<double> rule2(std::vector<Boid> boids, Boid current) {
 
     return c;
 }
+
+double avg_velocity(std::vector<Boid> boids) {
+    return accumulate(boids.begin(),
+                      boids.end(),
+                      0,
+                      [](double res, Boid b){ return res + b.get_vel(); }) / boids.size();
+}

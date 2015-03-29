@@ -9,6 +9,8 @@ private:
     double pos_y;
     double pos_z;
 
+    double velocity;
+
 public:
     
     void set_x(double x) {
@@ -22,6 +24,14 @@ public:
         this->pos_z = z;
     }
 
+    void set_vel(double vel) {
+        this->velocity = vel;
+    }
+
+    double get_vel() const {
+        return this->velocity;
+    }
+
     double get_x() const {
         return pos_x;
     }
@@ -33,6 +43,7 @@ public:
     double get_z() const {
         return pos_z;
     }
+
 
     std::vector<double> get_vector() {
         std::vector<double> result = {
@@ -68,6 +79,13 @@ public:
         this->pos_x = pos_x;
         this->pos_y = pos_y;
         this->pos_z = pos_z;
+    }
+
+    Boid(double pos_x, double pos_y, double pos_z, double velocity) {
+        this->pos_x = pos_x;
+        this->pos_y = pos_y;
+        this->pos_z = pos_z;
+        this->velocity = velocity;
     }
 
 };

@@ -98,3 +98,14 @@ TEST_CASE("Rule 2: Boids try to keep a small distance away from other objects (i
     REQUIRE(c2[1] == -20.0);
     REQUIRE(c2[2] == 0.0);
 }
+
+TEST_CASE("Calculate average velocity") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0, 10.0),
+        Boid(10.0, 20.0, 30.0, 50.0),
+        Boid(30.0, 20.0, 30.0, 30.0)
+    };
+
+    double vel_results = avg_velocity(boids);
+    REQUIRE(vel_results == 30.0);
+}
