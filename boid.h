@@ -40,6 +40,21 @@ public:
         && this->get_z() == other.get_z();
     }
 
+    double get_distance(Boid boid) {
+        double result = 0;
+        std::vector<double> diffs = {
+           this->get_x() - boid.get_x(),
+           this->get_y() - boid.get_y(),
+           this->get_z() - boid.get_z() 
+        };
+
+        for (int i = 0 ; i < diffs.size(); i++) {
+            result += diffs[i]*diffs[i];
+        }
+
+        return sqrt(result);
+    }
+
     Boid(double pos_x, double pos_y, double pos_z) {
         this->pos_x = pos_x;
         this->pos_y = pos_y;

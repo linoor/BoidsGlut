@@ -58,3 +58,30 @@ TEST_CASE("Calculate vector offset for one boid (first rule)") {
     REQUIRE(offset_vector[1] == 0.10);
     REQUIRE(offset_vector[2] == 0.15);
 }
+
+TEST_CASE("get distance test") {
+    Boid boid1 = Boid(20.0, 20.0, 30.0);
+    Boid boid2 = Boid(10.0, 20.0, 30.0);
+
+    double result = boid1.get_distance(boid2);
+    REQUIRE(result == 10.0);
+}
+
+// TEST_CASE("Rule 2: Boids try to keep a small distance away from other objects (including other boids)") {
+//     std::vector<Boid> boids = {
+//         Boid(20.0, 20.0, 30.0),
+//         Boid(10.0, 20.0, 30.0),
+//         Boid(10.0, 40.0, 60.0)
+//     };
+
+//     std::vector<double> c = rule2(boids, boids[0]);
+
+//     // c = [0.0, 0.0, 0.0]
+//     // b - bj = [-10.0, 0.0, 0.0]
+//     // c = [10.0, 0.0, 0.0]
+//     // b - bj = [-10.0, 20.0, 30.0]
+//     // c = [20.0, -20.0, -30.0]
+//     REQUIRE(c[0] == 20.0);
+//     REQUIRE(c[1] == -20.0);
+//     REQUIRE(c[2] == -30.0);
+// }
