@@ -1,6 +1,8 @@
 #include "boid.h"
 #include <vector>
 #include <algorithm>
+#include <cmath>
+#include <iostream>
 
 std::vector<double> center_of_mass(std::vector<Boid> boids) {
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include <array>
 #include "rules.cpp"
+#include <iostream>
 
 /* example testing code
 unsigned int Factorial( unsigned int number ) {
