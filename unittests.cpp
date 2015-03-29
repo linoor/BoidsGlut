@@ -45,3 +45,16 @@ TEST_CASE("Calculate perceived center of mass") {
     REQUIRE(boids_results_perceived[1] == 30.0);
     REQUIRE(boids_results_perceived[2] == 45.0);
 }
+
+TEST_CASE("Calculate vector offset for one boid (first rule)") {
+     std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0),
+        Boid(10.0, 20.0, 30.0),
+        Boid(10.0, 40.0, 60.0)
+    };
+
+    std::vector<double> offset_vector = rule1(boids, boids[0]);
+    REQUIRE(offset_vector[0] == -0.10);
+    REQUIRE(offset_vector[1] == 0.10);
+    REQUIRE(offset_vector[2] == 0.15);
+}

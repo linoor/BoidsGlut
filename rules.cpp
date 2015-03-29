@@ -33,3 +33,20 @@ std::vector<double> perceived_center(std::vector<Boid> boids, Boid current) {
 
     return center_of_mass(others);
 }
+
+// returns offset vector for a specific boid (moves the boid 1% to the perceived center)
+std::vector<double> rule1(std::vector<Boid> boids, Boid current) {
+    const double factor = 0.01;
+
+    std::vector<double> pc = perceived_center(boids, current);
+
+    pc[0] -= current.get_x();
+    pc[1] -= current.get_y();
+    pc[2] -= current.get_z();
+
+    for (int i = 0; i < pc.size(); i++) {
+        pc[i] *= factor;
+    }
+
+    return pc;
+}
