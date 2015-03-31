@@ -9,7 +9,9 @@ private:
     double pos_y;
     double pos_z;
 
-    double velocity;
+    double vel_x;
+    double vel_y;
+    double vel_z;
 
 public:
     
@@ -24,12 +26,28 @@ public:
         this->pos_z = z;
     }
 
-    void set_vel(double vel) {
-        this->velocity = vel;
+    void set_vel_x(double vel_x) {
+        this->vel_x = vel_x;
     }
 
-    double get_vel() const {
-        return this->velocity;
+    void set_vel_y(double vel_y) {
+        this->vel_y = vel_y;
+    }
+
+    void set_vel_z(double vel_z) {
+        this->vel_z = vel_z;
+    }
+
+    double get_vel_x() const {
+        return this->vel_x;
+    }
+
+    double get_vel_y() const {
+        return this->vel_y;
+    }
+
+    double get_vel_z() const {
+        return this->vel_z;
     }
 
     double get_x() const {
@@ -81,11 +99,14 @@ public:
         this->pos_z = pos_z;
     }
 
-    Boid(double pos_x, double pos_y, double pos_z, double velocity) {
+    Boid(double pos_x, double pos_y, double pos_z, double vel_x, double vel_y, double vel_z) {
         this->pos_x = pos_x;
         this->pos_y = pos_y;
         this->pos_z = pos_z;
-        this->velocity = velocity;
+
+        this->vel_x = vel_x;
+        this->vel_y = vel_y;
+        this->vel_z = vel_z;
     }
 
 };

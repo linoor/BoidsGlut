@@ -88,19 +88,30 @@ std::vector<double> rule2(std::vector<Boid> boids, Boid current) {
     return c;
 }
 
-double avg_velocity(std::vector<Boid> boids) {
-    return accumulate(boids.begin(),
+std::vector<double> avg_velocity(std::vector<Boid> boids) {
+    std::vector<double> res = accumulate(
+                      boids.begin(),
                       boids.end(),
-                      0,
-                      [](double res, Boid b){ return res + b.get_vel(); }) / boids.size();
+                      std::vector<double> {0.0, 0.0, 0.0},
+                      [](std::vector<double> res, Boid b) {
+                       res[0] += b.get_vel_x();
+                       res[1] += b.get_vel_y();
+                       res[2] += b.get_vel_z();
+                       return res;
+                   });
+    for (int i = 0; i < res.size(); i++) {
+        res[i] /= res.size();
+    }
+
+    return res;
 }
 
-double per_avg_velocity(std::vector<Boid> boids, Boid current) {
-    std::vector<Boid> others = get_others(boids, current);
-    return avg_velocity(others);
-}
+// std::vector<double> per_avg_velocity(std::vector<Boid> boids, Boid current) {
+//     std::vector<Boid> others = get_others(boids, current);
+//     return avg_velocity(others);
+// }
 
-double rule3(std::vector<Boid> boids, Boid current) {
-    const int factor = 8;
-    return (per_avg_velocity(boids, current) - current.get_vel()) / factor;
-}
+// std::vector<double> rule3(std::vector<Boid> boids, Boid current) {
+//     const int factor = 8;
+//     return (per_avg_velocity(boids, current) - current.get_vel()) / factor;
+// }
