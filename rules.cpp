@@ -99,6 +99,7 @@ std::vector<double> avg_velocity(std::vector<Boid> boids) {
                        res[2] += b.get_vel_z();
                        return res;
                    });
+
     result[0] /= boids.size();
     result[1] /= boids.size();
     result[2] /= boids.size();
@@ -110,7 +111,14 @@ std::vector<double> per_avg_velocity(std::vector<Boid> boids, Boid current) {
     return avg_velocity(get_others(boids, current));
 }
 
-// std::vector<double> rule3(std::vector<Boid> boids, Boid current) {
-//     const int factor = 8;
-//     return (per_avg_velocity(boids, current) - current.get_vel()) / factor;
-// }
+std::vector<double> rule3(std::vector<Boid> boids, Boid current) {
+    const int factor = 8;
+
+    std::vector<double> result = per_avg_velocity(boids, current);
+
+    result[0] = result[0] - current.get_vel_x() / factor;
+    result[1] = result[1] - current.get_vel_y() / factor;
+    result[2] = result[2] - current.get_vel_z() / factor;
+
+    return result;
+}
