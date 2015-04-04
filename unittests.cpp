@@ -112,16 +112,18 @@ TEST_CASE("Calculate average velocity") {
     REQUIRE(vel_results[2] == 20.0);
 }
 
-// TEST_CASE("Calculating perceived velocity") {
-//     std::vector<Boid> boids = {
-//         Boid(20.0, 20.0, 30.0, 10.0),
-//         Boid(10.0, 20.0, 30.0, 50.0),
-//         Boid(30.0, 20.0, 30.0, 30.0)
-//     };
+TEST_CASE("Calculating perceived velocity") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0, 10.0, 10.0, 10.0),
+        Boid(10.0, 20.0, 30.0, 50.0, 70.0, 50.0),
+        Boid(30.0, 20.0, 30.0, 30.0, 50.0, 20.0)
+    };
 
-//    double vel_results = per_avg_velocity(boids, boids[0]);
-//    REQUIRE(vel_results == 40.0);
-// }
+    std::vector<double> vel_results = per_avg_velocity(boids, boids[0]); 
+    REQUIRE(vel_results[0] == 40.0);
+    REQUIRE(vel_results[1] == 60.0);
+    REQUIRE(vel_results[2] == 35.0);
+}
 
 // TEST_CASE("Rule 3") {
 //     std::vector<Boid> boids = {
