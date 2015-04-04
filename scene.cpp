@@ -20,33 +20,17 @@ GLint faces[6][4] = {  /* Vertex indices for the 6 faces of a cube. */
   {4, 5, 1, 0}, {5, 6, 2, 1}, {7, 4, 0, 3} };
 GLfloat v[8][3];  /* Will be filled in with X,Y,Z vertexes. */
 
-void
-drawBox(void)
-{
-  int i;
-
-  for (i = 0; i < 6; i++) {
-    glBegin(GL_QUADS);
-    glNormal3fv(&n[i][0]);
-    glVertex3fv(&v[faces[i][0]][0]);
-    glVertex3fv(&v[faces[i][1]][0]);
-    glVertex3fv(&v[faces[i][2]][0]);
-    glVertex3fv(&v[faces[i][3]][0]);
-    glEnd();
-  }
+void drawBoid(void) {
+  glutSolidSphere(0.5f, 20, 20);
 }
 
-void
-display(void)
-{
+void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  drawBox();
+  drawBoid();
   glutSwapBuffers();
 }
 
-void
-init(void)
-{
+void init(void) {
   /* Setup cube vertex data. */
   v[0][0] = v[1][0] = v[2][0] = v[3][0] = -1;
   v[4][0] = v[5][0] = v[6][0] = v[7][0] = 1;
@@ -80,9 +64,7 @@ init(void)
   glRotatef(-20, 0.0, 0.0, 1.0);
 }
 
-int
-main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   glutCreateWindow("red 3D lighted cube");
