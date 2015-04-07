@@ -18,6 +18,7 @@ void drawBoid(int x, int y, int z) {
 void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   drawBoid(1, 1, 1);
+  drawBoid(-1, -1, -1);
   glutSwapBuffers();
 }
 
