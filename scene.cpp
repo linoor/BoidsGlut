@@ -20,13 +20,17 @@ GLint faces[6][4] = {  /* Vertex indices for the 6 faces of a cube. */
   {4, 5, 1, 0}, {5, 6, 2, 1}, {7, 4, 0, 3} };
 GLfloat v[8][3];  /* Will be filled in with X,Y,Z vertexes. */
 
-void drawBoid(void) {
+void drawBoid(int x, int y, int z) {
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glTranslatef(x, y, z);
   glutSolidSphere(0.5f, 20, 20);
+  glPopMatrix();
 }
 
 void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  drawBoid();
+  drawBoid(1, 1, 1);
   glutSwapBuffers();
 }
 
