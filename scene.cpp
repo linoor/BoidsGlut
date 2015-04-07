@@ -46,6 +46,7 @@ void init(void) {
 int main(int argc, char **argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+  glutInitWindowSize(700, 800);
   glutCreateWindow("Boids algorithm");
   glutDisplayFunc(display);
   init();
