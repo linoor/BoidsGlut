@@ -1,6 +1,8 @@
 #ifndef BOID_H
 #define BOID_H
 
+#include <vector>
+
 class Boid {
 
 private:
@@ -38,6 +40,8 @@ public:
     
     Boid(double pos_x, double pos_y, double pos_z);
     Boid(double pos_x, double pos_y, double pos_z, double vel_x, double vel_y, double vel_z);
+
+    void draw();
 };
 
 #endif

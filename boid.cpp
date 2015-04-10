@@ -1,3 +1,7 @@
+#include <GL/glut.h>
+#include <vector>
+#include <cmath>
+
 void Boid::set_x(double x) {
         this->pos_x = x;
 }
@@ -90,4 +94,13 @@ Boid::Boid(double pos_x, double pos_y, double pos_z, double vel_x, double vel_y,
         this->vel_x = vel_x;
         this->vel_y = vel_y;
         this->vel_z = vel_z;
+}
+
+void Boid::draw() {
+  glMatrixMode(GL_MODELVIEW);
+  glPushMatrix();
+  glTranslatef(this->pos_x, this->pos_y, this->pos_z);
+  // the boid object
+  glutSolidSphere(0.5f, 20, 20);
+  glPopMatrix();
 }
