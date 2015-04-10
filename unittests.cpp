@@ -5,6 +5,7 @@
 #include <array>
 #include "rules.cpp"
 #include <iostream>
+#include "boid.cpp"
 
 /* example testing code
 unsigned int Factorial( unsigned int number ) {
