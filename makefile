@@ -1,6 +1,7 @@
+BOIDS = boid.cpp
 UNITTESTS = unittests
 SCENE = scene
-SOURCES = $(UNITTESTS) $(SCENE)
+SOURCES = $(UNITTESTS) $(SCENE) $(BOIDS)
 COMPILER = g++
 LIBS = -lglut -lGL -lGLU
 
