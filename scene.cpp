@@ -8,9 +8,10 @@ GLfloat n[6][3] = {  /* Normals for the 6 faces of a cube. */
   {-1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {1.0, 0.0, 0.0},
   {0.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, -1.0} };
 
+Boid boid(1,1,1);
+
 void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  Boid boid(1,1,1);
   boid.draw();
   Boid boid2(-1,-1,-1);
   boid2.draw();
@@ -38,12 +39,19 @@ void init(void) {
     0.0, 1.0, 0.);      /* up is in positive Y direction */
 }
 
+void update(int value) {
+  boid.set_x(boid.get_x() + 0.1);
+  glutPostRedisplay();
+  glutTimerFunc(200, update, 0);
+}
+
 int main(int argc, char **argv) {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   glutInitWindowSize(700, 800);
   glutCreateWindow("Boids algorithm");
   glutDisplayFunc(display);
+  glutTimerFunc(1, update, 0);
   init();
   glutMainLoop();
   return 0;             /* ANSI C requires main to return int. */
