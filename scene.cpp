@@ -1,4 +1,6 @@
 #include <GL/glut.h>
+#include "boid.h"
+#include "boid.cpp"
 
 GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
 GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  /* Infinite light location. */
@@ -6,19 +8,12 @@ GLfloat n[6][3] = {  /* Normals for the 6 faces of a cube. */
   {-1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {1.0, 0.0, 0.0},
   {0.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, -1.0} };
 
-void drawBoid(int x, int y, int z) {
-  glMatrixMode(GL_MODELVIEW);
-  glPushMatrix();
-  glTranslatef(x, y, z);
-  // the boid object
-  glutSolidSphere(0.5f, 20, 20);
-  glPopMatrix();
-}
-
 void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  drawBoid(1, 1, 1);
-  drawBoid(-1, -1, -1);
+  Boid boid(1,1,1);
+  boid.draw();
+  Boid boid2(-1,-1,-1);
+  boid2.draw();
   glutSwapBuffers();
 }
 
