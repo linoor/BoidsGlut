@@ -1,4 +1,4 @@
-BOIDS = boid.cpp
+BOIDS = boid
 UNITTESTS = unittests
 SCENE = scene
 SOURCES = $(UNITTESTS) $(SCENE) $(BOIDS)
@@ -10,7 +10,7 @@ test:
 	./unittests
 
 scene: clean
-	$(COMPILER) $(SCENE).cpp $(LIBS) -o scene
+	$(COMPILER) -std=c++11 $(SCENE).cpp $(LIBS) -o scene
 	./scene
 
 clean:
