@@ -8,13 +8,19 @@ GLfloat n[6][3] = {  /* Normals for the 6 faces of a cube. */
   {-1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {1.0, 0.0, 0.0},
   {0.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, -1.0} };
 
-Boid boid(1,1,1);
+std::vector<Boid> boids = {
+  Boid(1,1,1,0.1,0.1,0.1)
+};
 
 void display(void) {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  boid.draw();
-  Boid boid2(-1,-1,-1);
-  boid2.draw();
+
+  // displaying the boids
+  for (int i = 0; i < boids.size(); i++) {
+    Boid boid = boids[i];
+    boid.draw();
+  }
+
   glutSwapBuffers();
 }
 
@@ -40,7 +46,15 @@ void init(void) {
 }
 
 void update(int value) {
-  boid.set_x(boid.get_x() + 0.1);
+
+  // updating boids positions
+  for (int i = 0; i < boids.size(); i++) {
+    Boid boid = boids[i];
+    boid.set_x(boid.get_x() + boid.get_vel_x());
+    boid.set_y(boid.get_y() + boid.get_vel_y());
+    boid.set_z(boid.get_z() + boid.get_vel_z());
+  }
+
   glutPostRedisplay();
   glutTimerFunc(200, update, 0);
 }
