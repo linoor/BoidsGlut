@@ -40,7 +40,9 @@ void init(void) {
     /* aspect ratio */ 1.0,
     /* Z near */ 1.0, /* Z far */ 10.0);
   glMatrixMode(GL_MODELVIEW);
-  gluLookAt(0.0, 0.0, 5.0,  /* eye is at (0,0,5) */
+
+  // camera 
+  gluLookAt(0.0, 0.0, 10.0,  /* eye is at (0,0,5) */
     0.0, 0.0, 0.0,      /* center is at (0,0,0) */
     0.0, 1.0, 0.);      /* up is in positive Y direction */
 }
