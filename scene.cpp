@@ -1,6 +1,8 @@
 #include <GL/glut.h>
 #include "boid.h"
 #include "boid.cpp"
+#include <iostream>
+#include "rules.cpp"
 
 GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};  /* Red diffuse light. */
 GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  /* Infinite light location. */
@@ -51,7 +53,26 @@ void update(int value) {
 
   // updating boids positions
   for (int i = 0; i < boids.size(); i++) {
-    Boid boid = boids[i];
+    Boid boid = boids[i]; 
+
+    std::vector<double> rule_cohesion = rule1(boids, boid);
+    std::vector<double> rule_separation = rule2(boids, boid);
+    std::vector<double> rule_aligment = rule3(boids, boid);
+
+    for (int i = 0; i < 3; i++) {
+      boid.set_vel_x(boid.get_vel_x() + rule_cohesion[0]);
+      boid.set_vel_y(boid.get_vel_y() + rule_cohesion[1]);
+      boid.set_vel_z(boid.get_vel_z() + rule_cohesion[2]);
+
+      boid.set_vel_x(boid.get_vel_x() + rule_separation[0]);
+      boid.set_vel_y(boid.get_vel_y() + rule_separation[1]);
+      boid.set_vel_z(boid.get_vel_z() + rule_separation[2]);
+
+      boid.set_vel_x(boid.get_vel_x() + rule_aligment[0]);
+      boid.set_vel_y(boid.get_vel_y() + rule_aligment[1]);
+      boid.set_vel_z(boid.get_vel_z() + rule_aligment[2]);
+    }
+
     boid.set_x(boid.get_x() + boid.get_vel_x());
     boid.set_y(boid.get_y() + boid.get_vel_y());
     boid.set_z(boid.get_z() + boid.get_vel_z());
