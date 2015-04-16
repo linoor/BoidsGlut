@@ -11,7 +11,10 @@ GLfloat n[6][3] = {  /* Normals for the 6 faces of a cube. */
   {0.0, -1.0, 0.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, -1.0} };
 
 std::vector<Boid> boids = {
-  Boid(1,1,1,0.1,0.1,0.1)
+  Boid(1,1,1,0.1,0.1,0),
+  Boid(0,5,1,0.1,0.1,0),
+  Boid(-1,0,1,0.1,0.1,0),
+  Boid(-2,2,1,0.1,0.1,0)
 };
 
 void display(void) {
