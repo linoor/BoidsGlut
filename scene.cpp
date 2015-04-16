@@ -55,7 +55,8 @@ void update(int value) {
     boid.set_x(boid.get_x() + boid.get_vel_x());
     boid.set_y(boid.get_y() + boid.get_vel_y());
     boid.set_z(boid.get_z() + boid.get_vel_z());
-  }
+    boids[i] = boid;
+}
 
   glutPostRedisplay();
   glutTimerFunc(200, update, 0);
