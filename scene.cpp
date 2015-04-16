@@ -59,7 +59,7 @@ void update(int value) {
 }
 
   glutPostRedisplay();
-  glutTimerFunc(200, update, 0);
+  glutTimerFunc(50, update, 0);
 }
 
 int main(int argc, char **argv) {
