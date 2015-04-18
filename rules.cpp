@@ -115,10 +115,11 @@ std::vector<double> rule3(std::vector<Boid> boids, Boid current) {
     const int factor = 8;
 
     std::vector<double> result = per_avg_velocity(boids, current);
+    std::cout << result[0] << std::endl;
 
-    result[0] = result[0] - current.get_vel_x() / factor;
-    result[1] = result[1] - current.get_vel_y() / factor;
-    result[2] = result[2] - current.get_vel_z() / factor;
+    result[0] = (result[0] - current.get_vel_x()) / factor;
+    result[1] = (result[1] - current.get_vel_y()) / factor;
+    result[2] = (result[2] - current.get_vel_z()) / factor;
 
     return result;
 }

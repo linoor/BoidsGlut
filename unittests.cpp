@@ -126,13 +126,15 @@ TEST_CASE("Calculating perceived velocity") {
     REQUIRE(vel_results[2] == 35.0);
 }
 
-// TEST_CASE("Rule 3") {
-//     std::vector<Boid> boids = {
-//         Boid(20.0, 20.0, 30.0, 8.0),
-//         Boid(10.0, 20.0, 30.0, 50.0),
-//         Boid(30.0, 20.0, 30.0, 30.0)
-//     };
+TEST_CASE("Rule 3") {
+    std::vector<Boid> boids = {
+        Boid(20.0, 20.0, 30.0, 8.0, 3.0, 10.0),
+        Boid(10.0, 20.0, 30.0, 50.0, 60.0, 70.0),
+        Boid(30.0, 20.0, 30.0, 30.0, 10.0, 30.0)
+    };
 
-//     double offset_vel = rule3(boids, boids[0]);
-//     REQUIRE(offset_vel == 4.0);
-// }
+    std::vector<double> offset_vel = rule3(boids, boids[0]);
+    REQUIRE(offset_vel[0] == 4.0);
+    REQUIRE(offset_vel[1] == 4.0);
+    REQUIRE(offset_vel[2] == 5.0);
+}
